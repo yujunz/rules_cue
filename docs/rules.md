@@ -2,15 +2,21 @@
 
 Public API re-exports
 
-<a id="example"></a>
+<a id="version"></a>
 
-## example
+## version
 
 <pre>
-example()
+version(<a href="#version-name">name</a>)
 </pre>
 
-This is an example
 
+
+**PARAMETERS**
+
+
+| Name  | Description | Default Value |
+| :------------- | :------------- | :------------- |
+| <a id="version-name"></a>name |  <p align="center"> - </p>   |  none |
 
 
