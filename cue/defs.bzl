@@ -1,5 +1,8 @@
 "Public API re-exports"
 
-def example():
-    """This is an example"""
-    pass
+def version(name):
+    native.genrule(
+        name = name,
+        cmd = "$(CUE_BIN) version",
+        toolchains = ["@rules_cue//cue:resolved_toolchain"],
+    )

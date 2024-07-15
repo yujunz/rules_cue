@@ -9,12 +9,12 @@ Workaround for https://github.com/bazelbuild/bazel/issues/14009
 
 # Forward all the providers
 def _resolved_toolchain_impl(ctx):
-    toolchain_info = ctx.toolchains["//cue:toolchain_type"]
+    toolchain = ctx.toolchains["//cue:toolchain_type"]
     return [
-        toolchain_info,
-        toolchain_info.default,
-        toolchain_info.cueinfo,
-        toolchain_info.template_variables,
+        toolchain,
+        toolchain.default,
+        toolchain.cue,
+        toolchain.template_variables,
     ]
 
 # Copied from java_toolchain_alias

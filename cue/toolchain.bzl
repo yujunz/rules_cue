@@ -40,21 +40,21 @@ def _cue_toolchain_impl(ctx):
         files = depset(tool_files),
         runfiles = ctx.runfiles(files = tool_files),
     )
-    cueinfo = CueInfo(
+    cue = CueInfo(
         target_tool_path = target_tool_path,
         tool_files = tool_files,
     )
 
     # Export all the providers inside our ToolchainInfo
     # so the resolved_toolchain rule can grab and re-export them.
-    toolchain_info = platform_common.ToolchainInfo(
-        cueinfo = cueinfo,
+    toolchain = platform_common.ToolchainInfo(
+        cue = cue,
         template_variables = template_variables,
         default = default,
     )
     return [
         default,
-        toolchain_info,
+        toolchain,
         template_variables,
     ]
 
