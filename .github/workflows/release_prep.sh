@@ -22,7 +22,7 @@ cat << EOF
 2. Add to your \`MODULE.bazel\` file:
 
 \`\`\`starlark
-bazel_dep(name = "abc_dp_rules_cue", version = "${TAG:1}")
+bazel_dep(name = "rules_cue", version = "${TAG:1}")
 \`\`\`
 
 ## Using WORKSPACE
@@ -32,10 +32,10 @@ Paste this snippet into your \`WORKSPACE.bazel\` file:
 \`\`\`starlark
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
-    name = "abc_dp_rules_cue",
+    name = "rules_cue",
     sha256 = "${SHA}",
     strip_prefix = "${PREFIX}",
-    url = "https://github.com/abc-dp/rules_cue/releases/download/${TAG}/${ARCHIVE}",
+    url = "https://github.com/abcue/rules_cue/releases/download/${TAG}/${ARCHIVE}",
 )
 EOF
 

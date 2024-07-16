@@ -1,6 +1,6 @@
 # Override http_archive for local testing
 local_repository(
-    name = "abc_dp_rules_cue",
+    name = "rules_cue",
     path = "../..",
 )
 
@@ -14,6 +14,6 @@ local_repository(
 # you should fetch it *before* calling this.
 # Alternatively, you can skip calling this function, so long as you've
 # already fetched all the dependencies.
-load("@abc_dp_rules_cue//cue:repositories.bzl", "rules_cue_dependencies")
+load("@rules_cue//cue:repositories.bzl", "rules_cue_dependencies")
 
 rules_cue_dependencies()

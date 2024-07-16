@@ -91,8 +91,8 @@
   "moduleExtensions": {
     "//cue:extensions.bzl%cue": {
       "general": {
-        "bzlTransitiveDigest": "2s10NAIXmXEkEsEXzzCk6bzkaHIK5pID045S0QU+Uso=",
-        "usagesDigest": "JJYee7fqPEAprsCdP28xBUP+leaGbn+gNfsYXjXjOqY=",
+        "bzlTransitiveDigest": "z5ghkEufnB6wuXp3M6B94GD+FMjhODbdnBySC4UUvQI=",
+        "usagesDigest": "9LKPZVdd7AuVL9IgS+HKwPuLb7B1/6baG4O9Nq4vcrw=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
