@@ -9,7 +9,7 @@ genrule(
     name = "version",
     srcs = [],
     outs = ["version"],
-    cmd = "$(CUE_BIN) version | head -n 1 > $@",
+    cmd = "$(CUE_BIN) version | grep 'cue version' > $@",
     toolchains = [
         "@rules_cue//cue:resolved_toolchain",
     ],
@@ -18,9 +18,7 @@ genrule(
 write_file(
     name = "verison_golden",
     out = "version.golden",
-    content = [
-        "cue version v0.9.2\n",
-    ],
+    content = ["cue version v0.9.2\n"],
 )
 
 diff_test(

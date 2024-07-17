@@ -110,7 +110,7 @@
     },
     "@@rules_cue~//cue:extensions.bzl%cue": {
       "general": {
-        "bzlTransitiveDigest": "MLOW+ZD3jYb8xQw+VDH1ox78euWJ+BbLEWec2gHb6yE=",
+        "bzlTransitiveDigest": "6G9wbG49enthd3s1vF6kPxeM5BDVS1evfJPWJVHWeco=",
         "usagesDigest": "LQXrfKKQ/JgNGHTPR1hiYje17QKS55T8fMQTQwB8IYs=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
