@@ -5,6 +5,10 @@ RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.18.0/bazeli
 RUN chmod +x bazelisk-linux-amd64
 RUN mv bazelisk-linux-amd64 /usr/local/bin/bazel
 
+RUN wget https://github.com/bazelbuild/buildtools/releases/download/v7.1.2/buildifier-linux-amd64
+RUN chmod +x buildifier-linux-amd64
+RUN mv buildifier-linux-amd64 /usr/local/bin/buildifier
+
 # Install python3 and pip to setup pre-commit
 RUN apt update && apt install -y --no-install-recommends \
     python3-setuptools \
