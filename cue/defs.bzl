@@ -1,6 +1,6 @@
 "Public API re-exports"
 
-def version(name):
+def cue_version(name):
     native.genrule(
         name = name,
         cmd = "$(CUE_BIN) version",

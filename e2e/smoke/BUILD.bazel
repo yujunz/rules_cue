@@ -6,7 +6,7 @@ load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
 
 genrule(
-    name = "version",
+    name = "cue_version",
     srcs = [],
     outs = ["version"],
     cmd = "$(CUE_BIN) version | grep 'cue version' > $@",
@@ -23,6 +23,6 @@ write_file(
 
 diff_test(
     name = "diff_test",
-    file1 = ":version",
+    file1 = ":cue_version",
     file2 = ":verison_golden",
 )
