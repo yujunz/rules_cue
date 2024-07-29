@@ -40,12 +40,12 @@ cue_module(<a href="#cue_module-name">name</a>, <a href="#cue_module-kwargs">kwa
 | <a id="cue_module-kwargs"></a>kwargs |  <p align="center"> - </p>   |  none |
 
 
-<a id="version"></a>
+<a id="cue_version"></a>
 
-## version
+## cue_version
 
 <pre>
-version(<a href="#version-name">name</a>)
+cue_version(<a href="#cue_version-name">name</a>)
 </pre>
 
 
@@ -55,6 +55,6 @@ version(<a href="#version-name">name</a>)
 
 | Name  | Description | Default Value |
 | :------------- | :------------- | :------------- |
-| <a id="version-name"></a>name |  <p align="center"> - </p>   |  none |
+| <a id="cue_version-name"></a>name |  <p align="center"> - </p>   |  none |
 
 
