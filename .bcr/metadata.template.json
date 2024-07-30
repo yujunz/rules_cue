@@ -1,7 +1,7 @@
 {
-  "homepage": "https://github.com/abcue/rules_cue",
+  "homepage": "https://github.com/abcue/rules_abcue",
   "maintainers": [],
-  "repository": ["github:abcue/rules_cue"],
+  "repository": ["github:abcue/rules_abcue"],
   "versions": [],
   "yanked_versions": {}
 }

@@ -28,7 +28,7 @@ Run `bazel run //:gazelle` to keep them up-to-date.
 ## Using this as a development dependency of other rules
 
 You'll commonly find that you develop in another WORKSPACE, such as
-some other ruleset that depends on rules_cue, or in a nested
+some other ruleset that depends on rules_abcue, or in a nested
 WORKSPACE in the integration_tests folder.
 
 To always tell Bazel to use this directory rather than some release
@@ -36,11 +36,11 @@ artifact or a version fetched from the internet, run this from this
 directory:
 
 ```sh
-OVERRIDE="--override_repository=rules_cue=$(pwd)/rules_cue"
+OVERRIDE="--override_repository=rules_abcue=$(pwd)/rules_abcue"
 echo "common $OVERRIDE" >> ~/.bazelrc
 ```
 
-This means that any usage of `@rules_cue` on your system will point to this folder.
+This means that any usage of `@rules_abcue` on your system will point to this folder.
 
 ## Releasing
 

@@ -4,10 +4,10 @@ def cue_version(name):
     native.genrule(
         name = name,
         cmd = "$(CUE_BIN) version",
-        toolchains = ["@rules_cue//cue:resolved_toolchain"],
+        toolchains = ["@rules_abcue//cue:resolved_toolchain"],
     )
 
-# https://github.com/seh/rules_cue/blob/515c284b28313e90d4b0c6b914eecf93919bfea4/cue/cue.bzl#L14C1-L22C1
+# https://github.com/seh/rules_abcue/blob/515c284b28313e90d4b0c6b914eecf93919bfea4/cue/cue.bzl#L14C1-L22C1
 CUEModuleInfo = provider(
     doc = "Collects files from cue_module targets for use by referring cue_instance targets.",
     fields = {
@@ -17,7 +17,7 @@ CUEModuleInfo = provider(
     },
 )
 
-# https://github.com/seh/rules_cue/blob/515c284b28313e90d4b0c6b914eecf93919bfea4/cue/cue.bzl#L278C1-L320C1
+# https://github.com/seh/rules_abcue/blob/515c284b28313e90d4b0c6b914eecf93919bfea4/cue/cue.bzl#L278C1-L320C1
 def _cue_module_impl(ctx):
     module_file = ctx.file.file
     expected_module_file = "module.cue"

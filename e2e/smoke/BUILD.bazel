@@ -11,7 +11,7 @@ genrule(
     outs = ["version"],
     cmd = "$(CUE_BIN) version | grep 'cue version' > $@",
     toolchains = [
-        "@rules_cue//cue:resolved_toolchain",
+        "@rules_abcue//cue:resolved_toolchain",
     ],
 )
 

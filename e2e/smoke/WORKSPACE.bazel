@@ -1,22 +1,22 @@
 # Override http_archive for local testing
 local_repository(
-    name = "rules_cue",
+    name = "rules_abcue",
     path = "../..",
 )
 
 #---SNIP--- Below here is re-used in the workspace snippet published on releases
 
 ######################
-# rules_cue setup #
+# rules_abcue setup #
 ######################
-# Fetches the rules_cue dependencies.
+# Fetches the rules_abcue dependencies.
 # If you want to have a different version of some dependency,
 # you should fetch it *before* calling this.
 # Alternatively, you can skip calling this function, so long as you've
 # already fetched all the dependencies.
-load("@rules_cue//cue:repositories.bzl", "cue_register_toolchains", "rules_cue_dependencies")
+load("@rules_abcue//cue:repositories.bzl", "cue_register_toolchains", "rules_abcue_dependencies")
 
-rules_cue_dependencies()
+rules_abcue_dependencies()
 
 cue_register_toolchains(
     name = "cue",

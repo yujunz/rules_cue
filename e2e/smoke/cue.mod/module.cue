@@ -1,4 +1,4 @@
-module: "github.com/abcue/rules_cue/e2e/smoke"
+module: "github.com/abcue/rules_abcue/e2e/smoke"
 language: {
 	version: "v0.9.2"
 }
