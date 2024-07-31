@@ -4,12 +4,12 @@ Add a basic smoke-test target below.
 
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
-load("@rules_abcue//cue:defs.bzl", "cue_instance")
+load("@rules_abcue//cue:defs.bzl", "cue_instance", "cue_version")
 
 genrule(
-    name = "cue_version",
+    name = "version_short",
     srcs = [],
-    outs = ["version"],
+    outs = ["version_short"],
     cmd = "$(CUE_BIN) version | grep 'cue version' > $@",
     toolchains = [
         "@rules_abcue//cue:resolved_toolchain",
@@ -24,8 +24,12 @@ write_file(
 
 diff_test(
     name = "diff_test",
-    file1 = ":cue_version",
+    file1 = ":version_short",
     file2 = ":verison_golden",
+)
+
+cue_version(
+    name = "version",
 )
 
 cue_instance(
