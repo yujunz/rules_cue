@@ -12,7 +12,8 @@ load(
 def cue_version(name):
     native.genrule(
         name = name,
-        cmd = "$(CUE_BIN) version",
+        cmd = "$(CUE_BIN) version > $@",
+        outs = ["version"],
         toolchains = ["@rules_abcue//cue:resolved_toolchain"],
     )
 
