@@ -40,9 +40,22 @@ bzl_library(
 )
 
 bzl_library(
+    name = "cue",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue/private:future",
+        "@bazel_skylib//lib:paths",
+    ],
+)
+
+bzl_library(
     name = "defs",
     srcs = ["defs.bzl"],
     visibility = ["//visibility:public"],
+    deps = [
+        "//cue/private:future",
+        "@bazel_skylib//lib:paths",
+    ],
 )
 
 bzl_library(
