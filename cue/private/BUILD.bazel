@@ -17,3 +17,9 @@ bzl_library(
     srcs = ["resolved_toolchain.bzl"],
     visibility = ["//cue:__subpackages__"],
 )
+
+bzl_library(
+    name = "future",
+    srcs = ["future.bzl"],
+    visibility = ["//cue:__subpackages__"],
+)

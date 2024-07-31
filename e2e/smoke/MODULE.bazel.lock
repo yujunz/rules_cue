@@ -107,6 +107,79 @@
         },
         "recordedRepoMappingEntries": []
       }
+    },
+    "@@rules_abcue~//cue:extensions.bzl%cue": {
+      "general": {
+        "bzlTransitiveDigest": "/+ePQz/xqYlHkASOzDNavFjbAuuF+kLl7KXkzhuh/3A=",
+        "usagesDigest": "YVClFYthDS2hQnX4r3Q1hVHuOAKd0ToBndZFZWIVUrY=",
+        "recordedFileInputs": {},
+        "recordedDirentsInputs": {},
+        "envVariables": {},
+        "generatedRepoSpecs": {
+          "cue_windows_amd64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "windows_amd64",
+              "cue_version": "0.9.2"
+            }
+          },
+          "cue_windows_arm64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "windows_arm64",
+              "cue_version": "0.9.2"
+            }
+          },
+          "cue_darwin_amd64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "darwin_amd64",
+              "cue_version": "0.9.2"
+            }
+          },
+          "cue_linux_arm64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "linux_arm64",
+              "cue_version": "0.9.2"
+            }
+          },
+          "cue_darwin_arm64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "darwin_arm64",
+              "cue_version": "0.9.2"
+            }
+          },
+          "cue_linux_amd64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "linux_amd64",
+              "cue_version": "0.9.2"
+            }
+          },
+          "cue_toolchains": {
+            "bzlFile": "@@rules_abcue~//cue/private:toolchains_repo.bzl",
+            "ruleClassName": "toolchains_repo",
+            "attributes": {
+              "user_repository_name": "cue"
+            }
+          }
+        },
+        "recordedRepoMappingEntries": [
+          [
+            "rules_abcue~",
+            "bazel_tools",
+            "bazel_tools"
+          ]
+        ]
+      }
     }
   }
 }
