@@ -23,3 +23,19 @@ bzl_library(
     srcs = ["future.bzl"],
     visibility = ["//cue:__subpackages__"],
 )
+
+bzl_library(
+    name = "instance",
+    srcs = ["instance.bzl"],
+    visibility = ["//cue:__subpackages__"],
+    deps = [
+        ":future",
+        "@bazel_skylib//lib:paths",
+    ],
+)
+
+bzl_library(
+    name = "module",
+    srcs = ["module.bzl"],
+    visibility = ["//cue:__subpackages__"],
+)

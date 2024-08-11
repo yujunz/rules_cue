@@ -53,8 +53,8 @@ bzl_library(
     srcs = ["defs.bzl"],
     visibility = ["//visibility:public"],
     deps = [
-        "//cue/private:future",
-        "@bazel_skylib//lib:paths",
+        "//cue/private:instance",
+        "//cue/private:module",
     ],
 )
 
