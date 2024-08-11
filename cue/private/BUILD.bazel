@@ -45,3 +45,23 @@ bzl_library(
     srcs = ["config.bzl"],
     visibility = ["//cue:__subpackages__"],
 )
+
+bzl_library(
+    name = "export",
+    srcs = ["export.bzl"],
+    visibility = ["//cue:__subpackages__"],
+    deps = [":factory"],
+)
+
+bzl_library(
+    name = "factory",
+    srcs = ["factory.bzl"],
+    visibility = ["//cue:__subpackages__"],
+    deps = [
+        ":config",
+        ":future",
+        ":instance",
+        ":module",
+        "@bazel_skylib//lib:paths",
+    ],
+)

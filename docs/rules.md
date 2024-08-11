@@ -44,6 +44,25 @@ cue_instance(<a href="#cue_instance-name">name</a>, <a href="#cue_instance-ances
 | <a id="cue_instance-srcs"></a>srcs |  CUE input files that are part of the nominated CUE package.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | required |  |
 
 
+<a id="cue_export"></a>
+
+## cue_export
+
+<pre>
+cue_export(<a href="#cue_export-name">name</a>, <a href="#cue_export-kwargs">kwargs</a>)
+</pre>
+
+
+
+**PARAMETERS**
+
+
+| Name  | Description | Default Value |
+| :------------- | :------------- | :------------- |
+| <a id="cue_export-name"></a>name |  <p align="center"> - </p>   |  none |
+| <a id="cue_export-kwargs"></a>kwargs |  <p align="center"> - </p>   |  none |
+
+
 <a id="cue_module"></a>
 
 ## cue_module
