@@ -2,6 +2,25 @@
 
 Public APIs re-export
 
+<a id="cue_config"></a>
+
+## cue_config
+
+<pre>
+cue_config(<a href="#cue_config-name">name</a>, <a href="#cue_config-stamp">stamp</a>)
+</pre>
+
+Collects information about the build settings in the current configuration.
+
+**ATTRIBUTES**
+
+
+| Name  | Description | Type | Mandatory | Default |
+| :------------- | :------------- | :------------- | :------------- | :------------- |
+| <a id="cue_config-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/concepts/labels#target-names">Name</a> | required |  |
+| <a id="cue_config-stamp"></a>stamp |  Whether stamping is enabled for this build.   | Boolean | required |  |
+
+
 <a id="cue_instance"></a>
 
 ## cue_instance
