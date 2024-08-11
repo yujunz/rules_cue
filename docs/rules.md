@@ -1,6 +1,6 @@
 <!-- Generated with Stardoc: http://skydoc.bazel.build -->
 
-CUE rules forked from https://github.com/seh/rules_cue/blob/main/cue/cue.bzl
+Public APIs re-export
 
 <a id="cue_instance"></a>
 
@@ -23,47 +23,6 @@ cue_instance(<a href="#cue_instance-name">name</a>, <a href="#cue_instance-ances
 | <a id="cue_instance-directory_of"></a>directory_of |  Directory designator to use as the instance directory.<br><br>If the given target is a directory, use that directly. If the given target is a file, use the file's containing directory.<br><br>If left unspecified, use the directory containing the first CUE file nominated in this cue_instance's "srcs" attribute.   | <a href="https://bazel.build/concepts/labels">Label</a> | optional | <code>None</code> |
 | <a id="cue_instance-package_name"></a>package_name |  Name of the CUE package to load for this instance.<br><br>If left unspecified, use the basename of the containing directory as the CUE pacakge name.   | String | optional | <code>""</code> |
 | <a id="cue_instance-srcs"></a>srcs |  CUE input files that are part of the nominated CUE package.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | required |  |
-
-
-<a id="CUEInstanceInfo"></a>
-
-## CUEInstanceInfo
-
-<pre>
-CUEInstanceInfo(<a href="#CUEInstanceInfo-directory_path">directory_path</a>, <a href="#CUEInstanceInfo-files">files</a>, <a href="#CUEInstanceInfo-module">module</a>, <a href="#CUEInstanceInfo-package_name">package_name</a>, <a href="#CUEInstanceInfo-transitive_files">transitive_files</a>)
-</pre>
-
-Collects files and references from cue_instance targets for use in downstream consuming targets.
-
-**FIELDS**
-
-
-| Name  | Description |
-| :------------- | :------------- |
-| <a id="CUEInstanceInfo-directory_path"></a>directory_path |  Directory path (a "short path") to the CUE instance.    |
-| <a id="CUEInstanceInfo-files"></a>files |  The CUE files defining this instance.    |
-| <a id="CUEInstanceInfo-module"></a>module |  The CUE module within which this instance sits.    |
-| <a id="CUEInstanceInfo-package_name"></a>package_name |  Name of the CUE package to load for this instance.    |
-| <a id="CUEInstanceInfo-transitive_files"></a>transitive_files |  The set of files (including other instances) referenced by this instance.    |
-
-
-<a id="CUEModuleInfo"></a>
-
-## CUEModuleInfo
-
-<pre>
-CUEModuleInfo(<a href="#CUEModuleInfo-module_file">module_file</a>, <a href="#CUEModuleInfo-external_package_sources">external_package_sources</a>)
-</pre>
-
-Collects files from cue_module targets for use by referring cue_instance targets.
-
-**FIELDS**
-
-
-| Name  | Description |
-| :------------- | :------------- |
-| <a id="CUEModuleInfo-module_file"></a>module_file |  The "module.cue" file in the module directory.    |
-| <a id="CUEModuleInfo-external_package_sources"></a>external_package_sources |  The set of files in this CUE module defining external packages.    |
 
 
 <a id="cue_module"></a>
