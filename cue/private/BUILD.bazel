@@ -39,3 +39,9 @@ bzl_library(
     srcs = ["module.bzl"],
     visibility = ["//cue:__subpackages__"],
 )
+
+bzl_library(
+    name = "config",
+    srcs = ["config.bzl"],
+    visibility = ["//cue:__subpackages__"],
+)
