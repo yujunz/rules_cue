@@ -54,6 +54,7 @@ bzl_library(
     visibility = ["//visibility:public"],
     deps = [
         "//cue/private:config",
+        "//cue/private:export",
         "//cue/private:instance",
         "//cue/private:module",
     ],

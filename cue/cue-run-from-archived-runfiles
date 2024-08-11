@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+# Copy-pasted from the Bazel Bash runfiles library v2.
+set -uo pipefail; set +e; f=bazel_tools/tools/bash/runfiles/runfiles.bash
+source "${RUNFILES_DIR:-/dev/null}/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "${RUNFILES_MANIFEST_FILE:-/dev/null}" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$0.runfiles/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.exe.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  { echo>&2 "ERROR: cannot find $f"; exit 1; }; f=; set -e
+
+function usage() {
+  printf "usage: %s [-i instance_path] [-m module_file] [-p package_name] cue_tool cue_command extra_args_file packageless_files_file output_file [args...]\n" "$(basename "${0}")" 1>&2
+  exit 2
+}
+
+instance_path=
+module_file=
+package_name=
+
+function parse_args() {
+  while getopts i:m:p: name
+  do
+    case "${name}" in
+      i) instance_path="${OPTARG}";;
+      h) usage;;
+      m) module_file="${OPTARG}";;
+      p) package_name="${OPTARG}";;
+      ?) usage;;
+    esac
+  done
+  if [ -n "${instance_path}" ] && [ -z "${module_file}" ]; then
+      printf "%s: specifying a CUE instance path requires specifying a module path\n" "$(basename "${0}")" 1>&2
+      exit 1
+  fi
+  if [ -n "${package_name}" ] && [ -z "${instance_path}" ]; then
+      printf "%s: specifying a CUE package name requires specifying an instance path\n" "$(basename "${0}")" 1>&2
+      exit 1
+  fi
+}
+
+parse_args "${@}"
+shift $((OPTIND - 1))
+
+cue=$1; shift
+command=$1; shift
+extra_args_file=$1; shift
+packageless_files_file=$1; shift
+output_file=$1; shift
+
+# Try to find an executable file with a Windows-style name first.
+zipper="$(rlocation bazel_tools/tools/zip/zipper/zipper.exe)"
+if [ -z "${zipper}" ]; then
+  zipper="$(rlocation bazel_tools/tools/zip/zipper/zipper)"
+  if [ -z "${zipper}" ]; then
+    echo >&2 "Failed to locate the required \"zipper\" tool as a runfile."
+    exit 1
+  fi
+fi
+
+zip_manifest_file="$(mktemp zip-manifest-XXXXXX)"
+sed -E -e 's/^([^ ]+) /\1=/' "${RUNFILES_MANIFEST_FILE}" > "${zip_manifest_file}"
+runfiles_archive_file="$(mktemp runfiles-archive-XXXXXX)"
+"${zipper}" c "${runfiles_archive_file}" "@${zip_manifest_file}"
+
+cue_src_dir="$(mktemp -d cue-src-XXXXXX)"
+"${zipper}" x "${runfiles_archive_file}" -d "${cue_src_dir}"
+
+oldwd="${PWD}"
+packageless_file_args=()
+qualifier=
+while read -r line; do
+  if [ -z "${line}" ]; then
+    continue
+  fi
+  if [[ "${line}" =~ .+:$ ]]; then
+    qualifier="${line}"
+  else
+    if [ -n "${qualifier}" ]; then
+      packageless_file_args+=("${qualifier}")
+      qualifier=
+    fi
+    packageless_file_args+=("${oldwd}/${cue_src_dir}/${line}")
+  fi
+done < "${packageless_files_file}"
+if [ -n "${qualifier}" ]; then
+  echo >&2 "No file path followed qualifier \"${qualifier}\"."
+  exit 1
+fi
+
+# NB: If we don't assign to packageless_file_args above in the loop,
+# it winds up being undefined afterward.
+if (( ${#packageless_file_args[@]} == 0 )); then
+  packageless_file_args=()
+fi
+
+cd "${cue_src_dir}"
+
+if [ -n "${module_file}" ]; then
+  module_path="$(dirname $(dirname ${module_file}))"
+  cd "${module_path}"
+fi
+
+# NB: See https://stackoverflow.com/questions/7577052 for the odd
+# treatment of the "packageless_file_args" array variable here,
+# handling the case where the array winds up empty for lack of
+# so-called "packageless files" being used as input. As we are
+# uncertain of which Bash we'll wind up using, aim to work around as
+# many of their mutually exclusive defects as possible.
+"${oldwd}/${cue}" "${command}" --outfile "${oldwd}/${output_file}" \
+  ${instance_path}${package_name:+:${package_name}} \
+  ${packageless_file_args[@]+"${packageless_file_args[@]}"} \
+  $(< "${oldwd}/${extra_args_file}") \
+  "${@-}"

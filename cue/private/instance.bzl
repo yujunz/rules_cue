@@ -111,3 +111,116 @@ the CUE pacakge name.""",
         ),
     },
 )
+
+def _file_from_label_keyed_string_dict_key(k):
+    # NB: The Targets in a label_keyed_string_dict attribute have the key's
+    # source file in a depset, as opposed being represented directly as in a
+    # label_list attribute.
+    files = k.files.to_list()
+    if len(files) != 1:
+        fail(msg = "Unexpected number of files in target {}: {}".format(k, len(files)))
+    return files[0]
+
+def _collect_direct_file_sources(ctx):
+    files = list(ctx.files.srcs)
+    for k, _ in ctx.attr.qualified_srcs.items():
+        file = _file_from_label_keyed_string_dict_key(k)
+        if file not in files:
+            files.append(file)
+    return files
+
+def _cue_instance_runfiles_impl(ctx):
+    instance = ctx.attr.instance[CUEInstanceInfo]
+    return [
+        DefaultInfo(runfiles = ctx.runfiles(
+            files = _collect_direct_file_sources(ctx),
+            transitive_files = depset(
+                transitive = [instance.transitive_files],
+            ),
+        )),
+    ]
+
+def _add_common_source_consuming_attrs_to(attrs):
+    attrs.update({
+        "qualified_srcs": attr.label_keyed_string_dict(
+            doc = """Additional input files that are not part of a CUE package, each together with a qualifier.
+
+The qualifier overrides CUE's normal guessing at a file's type from
+its file extension. Specify it here without the trailing colon
+character.""",
+            allow_files = True,
+        ),
+        "srcs": attr.label_list(
+            doc = "Additional input files that are not part of a CUE package.",
+            allow_files = True,
+        ),
+    })
+    return attrs
+
+_cue_instance_runfiles = rule(
+    implementation = _cue_instance_runfiles_impl,
+    attrs = _add_common_source_consuming_attrs_to({
+        "instance": attr.label(
+            doc = """CUE instance to export.
+
+This value must refer either to a target using the cue_instance rule
+or another rule that yields a CUEInstanceInfo provider.""",
+            providers = [CUEInstanceInfo],
+            mandatory = True,
+        ),
+    }),
+)
+
+def _declare_cue_run_binary(name, runfiles_name, tags = []):
+    native.config_setting(
+        name = name + "_lacks_runfiles_directory",
+        constraint_values = [
+            Label("@platforms//os:windows"),
+        ],
+    )
+    cue_run_name = name + "_cue_run_from_runfiles"
+    native.sh_binary(
+        name = cue_run_name,
+        # NB: On Windows, we don't expect to have a runfiles directory
+        # available, so instead we rely on a runfiles manifest to tell
+        # us which files should be present where. We use a ZIP archive
+        # to collect and project these runfiles into the right place.
+        srcs = select({
+            ":{}_lacks_runfiles_directory".format(name): [Label("//cue:cue-run-from-archived-runfiles")],
+            "//conditions:default": [Label("//cue:cue-run-from-runfiles")],
+        }),
+        data = [":" + runfiles_name] + select({
+            ":{}_lacks_runfiles_directory".format(name): ["@bazel_tools//tools/zip:zipper"],
+            "//conditions:default": [],
+        }),
+        deps = ["@bazel_tools//tools/bash/runfiles"],
+        tags = tags,
+    )
+    return cue_run_name
+
+def prepare_instance_consuming_rule(name, **kwargs):
+    """Prepare a rule for consuming a CUE instance.
+
+    Args:
+        name:   The name of the rule.
+        **kwargs: Additional keyword arguments for the rule.
+
+    Returns:
+        A dictionary of keyword arguments for the rule.
+    """
+    instance = kwargs["instance"]
+    qualified_srcs = kwargs.get("qualified_srcs", {})
+    srcs = kwargs.get("srcs", [])
+    tags = kwargs.get("tags", [])
+
+    runfiles_name = name + "_cue_runfiles"
+    _cue_instance_runfiles(
+        name = runfiles_name,
+        instance = instance,
+        srcs = srcs,
+        qualified_srcs = qualified_srcs,
+        tags = tags,
+    )
+    return kwargs | {
+        "cue_run": ":" + _declare_cue_run_binary(name, runfiles_name, tags),
+    }
