@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Forked from https://github.com/seh/rules_cue/blob/main/cue/cue-run-from-runfiles
+
 # Copy-pasted from the Bazel Bash runfiles library v2.
 set -uo pipefail; set +e; f=bazel_tools/tools/bash/runfiles/runfiles.bash
 source "${RUNFILES_DIR:-/dev/null}/$f" 2>/dev/null || \
@@ -10,7 +12,7 @@ source "${RUNFILES_DIR:-/dev/null}/$f" 2>/dev/null || \
   { echo>&2 "ERROR: cannot find $f"; exit 1; }; f=; set -e
 
 function usage() {
-  printf "usage: %s [-i instance_path] [-m module_file] [-p package_name] cue_tool cue_command extra_args_file packageless_files_file output_file [args...]\n" "$(basename "${0}")" 1>&2
+  printf "usage: %s [-i instance_path] [-m module_file] [-p package_name] cue_tool cue_command extra_args_file output_file [args...]\n" "$(basename "${0}")" 1>&2
   exit 2
 }
 
@@ -45,36 +47,9 @@ shift $((OPTIND - 1))
 cue=$1; shift
 command=$1; shift
 extra_args_file=$1; shift
-packageless_files_file=$1; shift
 output_file=$1; shift
 
 oldwd="${PWD}"
-packageless_file_args=()
-qualifier=
-while read -r line; do
-  if [ -z "${line}" ]; then
-    continue
-  fi
-  if [[ "${line}" =~ .+:$ ]]; then
-    qualifier="${line}"
-  else
-    if [ -n "${qualifier}" ]; then
-      packageless_file_args+=("${qualifier}")
-      qualifier=
-    fi
-    packageless_file_args+=("${oldwd}/$(rlocation ${line})")
-  fi
-done < "${packageless_files_file}"
-if [ -n "${qualifier}" ]; then
-  echo >&2 "No file path followed qualifier \"${qualifier}\"."
-  exit 1
-fi
-
-# NB: If we don't assign to packageless_file_args above in the loop,
-# it winds up being undefined afterward.
-if (( ${#packageless_file_args[@]} == 0 )); then
-  packageless_file_args=()
-fi
 
 if [ -n "${module_file}" ]; then
   adjusted_module_file="$(rlocation ${module_file})"
@@ -86,14 +61,7 @@ if [ -n "${module_file}" ]; then
   cd "${module_path}"
 fi
 
-# NB: See https://stackoverflow.com/questions/7577052 for the odd
-# treatment of the "packageless_file_args" array variable here,
-# handling the case where the array winds up empty for lack of
-# so-called "packageless files" being used as input. As we are
-# uncertain of which Bash we'll wind up using, aim to work around as
-# many of their mutually exclusive defects as possible.
 "${oldwd}/${cue}" "${command}" --outfile "${oldwd}/${output_file}" \
   ${instance_path}${package_name:+:${package_name}} \
-  ${packageless_file_args[@]+"${packageless_file_args[@]}"} \
   $(< "${oldwd}/${extra_args_file}") \
   "${@-}"
