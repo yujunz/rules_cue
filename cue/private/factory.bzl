@@ -8,22 +8,7 @@ load("//cue/private:instance.bzl", "CUEInstanceInfo")
 def _cue_module_root_directory_path(ctx, module):
     return paths.dirname(paths.dirname(_runfile_path(ctx, module.module_file)))
 
-def _collect_packageless_file_path(ctx, file, lines):
-    p = _runfile_path(ctx, file)
-    if p.find(":") != -1:
-        fail(msg = "CUE rejects file paths that contain a colon (:): {}".format(p))
-    lines.append(p + "\n")
-
-def _file_from_label_keyed_string_dict_key(k):
-    # NB: The Targets in a label_keyed_string_dict attribute have the key's
-    # source file in a depset, as opposed being represented directly as in a
-    # label_list attribute.
-    files = k.files.to_list()
-    if len(files) != 1:
-        fail(msg = "Unexpected number of files in target {}: {}".format(k, len(files)))
-    return files[0]
-
-def _add_common_output_producing_args_to(ctx, args, stamped_args_file, packageless_files_file):
+def _add_common_output_producing_args_to(ctx, args, stamped_args_file):
     cue_config = ctx.attr._cue_config[CUEConfigInfo]
     stamping_enabled = ctx.attr.stamping_policy == "Force" or ctx.attr.stamping_policy == "Allow" and cue_config.stamp
     required_stamp_bindings = {}
@@ -92,24 +77,6 @@ def _add_common_output_producing_args_to(ctx, args, stamped_args_file, packagele
             progress_message = "Replacing injection placeholders with stamped values for {}".format(ctx.label.name),
         )
 
-    lines = []
-    srcs = list(ctx.files.srcs)
-    for src in srcs:
-        _collect_packageless_file_path(ctx, src, lines)
-    for k, v in ctx.attr.qualified_srcs.items():
-        file = _file_from_label_keyed_string_dict_key(k)
-        if file in srcs:
-            srcs.remove(file)
-        if not v:
-            _collect_packageless_file_path(ctx, file, lines)
-            continue
-        lines.append(v + ":")
-        _collect_packageless_file_path(ctx, file, lines)
-    ctx.actions.write(
-        packageless_files_file,
-        "\n".join(lines),
-    )
-
 def _make_output_producing_action(ctx, cue_command, mnemonic, description, augment_args = None, module_file = None, instance_directory_path = None, instance_package_name = None):
     cue_info = ctx.toolchains["//cue:toolchain_type"].cue
     args = ctx.actions.args()
@@ -127,10 +94,8 @@ def _make_output_producing_action(ctx, cue_command, mnemonic, description, augme
     args.add(cue_command)
     stamped_args_file = ctx.actions.declare_file("%s-stamped-args" % ctx.label.name)
     args.add(stamped_args_file.path)
-    packageless_files_file = ctx.actions.declare_file("%s-packageless-files" % ctx.label.name)
-    args.add(packageless_files_file.path)
     args.add(ctx.outputs.result.path)
-    _add_common_output_producing_args_to(ctx, args, stamped_args_file, packageless_files_file)
+    _add_common_output_producing_args_to(ctx, args, stamped_args_file)
 
     if augment_args:
         augment_args(ctx, args)
@@ -140,9 +105,8 @@ def _make_output_producing_action(ctx, cue_command, mnemonic, description, augme
         arguments = [args],
         inputs = [
             stamped_args_file,
-            packageless_files_file,
         ],
-        tools = [cue_info],
+        tools = [cue_info.tool],
         outputs = [ctx.outputs.result],
         mnemonic = mnemonic,
         progress_message = "Capturing the {} CUE configuration for target \"{}\"".format(description, ctx.label.name),

@@ -1,8 +1,12 @@
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("//cue/private:resolved_toolchain.bzl", "resolved_toolchain")
+load(":defs.bzl", "cue_config")
 
 # For stardoc to reference the files
-exports_files(["defs.bzl"])
+exports_files([
+    "defs.bzl",
+    "cue-run-from-runfiles",
+])
 
 # This is the target rule authors should put in their "toolchains"
 # attribute in order to get a runtime for the correct platform.
@@ -17,6 +21,12 @@ resolved_toolchain(
     # Marked manual so that `bazel test //...` passes
     # even if no toolchain is registered.
     tags = ["manual"],
+    visibility = ["//visibility:public"],
+)
+
+cue_config(
+    name = "cue_config",
+    stamp = True,
     visibility = ["//visibility:public"],
 )
 

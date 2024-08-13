@@ -4,7 +4,7 @@ Add a basic smoke-test target below.
 
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
-load("@rules_abcue//cue:defs.bzl", "cue_instance", "cue_version")
+load("@rules_abcue//cue:defs.bzl", "cue_export", "cue_instance", "cue_version")
 
 genrule(
     name = "version_short",
@@ -19,7 +19,7 @@ genrule(
 write_file(
     name = "verison_golden",
     out = "version.golden",
-    content = ["cue version v0.9.2\n"],
+    content = ["cue version v0.8.2\n"],
 )
 
 diff_test(
@@ -29,11 +29,22 @@ diff_test(
 )
 
 cue_version(
-    name = "version",
+    name = "cue_version",
 )
 
 cue_instance(
-    name = "smoke_library",
+    name = "smoke_instance",
+    package_name = "smoke",
     srcs = ["smoke.cue"],
     ancestor = "//cue.mod",
+)
+
+cue_export(
+    name = "smoke_export",
+    out = "yaml",
+    instance = ":smoke_instance",
+    package = "smoke",
+    path = [
+        "foo:",
+    ],
 )

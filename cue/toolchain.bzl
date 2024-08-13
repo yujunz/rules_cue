@@ -6,8 +6,8 @@ CueInfo = provider(
     fields = {
         "target_tool_path": "Path to the tool executable for the target platform.",
         "tool_files": """Files required in runfiles to make the tool executable available.
-
 May be empty if the target_tool_path points to a locally installed tool binary.""",
+        "tool": "The tool file to use for the target platform.",
     },
 )
 
@@ -43,6 +43,7 @@ def _cue_toolchain_impl(ctx):
     cue = CueInfo(
         target_tool_path = target_tool_path,
         tool_files = tool_files,
+        tool = tool_files[0],
     )
 
     # Export all the providers inside our ToolchainInfo

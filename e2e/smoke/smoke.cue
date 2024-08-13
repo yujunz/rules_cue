@@ -1,1 +1,3 @@
 package smoke
+
+foo: "bar"
