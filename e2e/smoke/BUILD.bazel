@@ -23,7 +23,7 @@ write_file(
 )
 
 diff_test(
-    name = "diff_test",
+    name = "diff_version",
     file1 = ":version_short",
     file2 = ":verison_golden",
 )
@@ -44,7 +44,16 @@ cue_export(
     out = "yaml",
     instance = ":smoke_instance",
     package = "smoke",
-    path = [
-        "foo:",
-    ],
+)
+
+write_file(
+    name = "export_golden",
+    out = "export.golden.yaml",
+    content = ["foo: bar\n"],
+)
+
+diff_test(
+    name = "diff_export",
+    file1 = ":smoke_export",
+    file2 = ":export_golden",
 )
