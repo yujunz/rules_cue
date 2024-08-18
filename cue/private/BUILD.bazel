@@ -65,3 +65,13 @@ bzl_library(
         "@bazel_skylib//lib:paths",
     ],
 )
+
+bzl_library(
+    name = "def",
+    srcs = ["def.bzl"],
+    visibility = ["//cue:__subpackages__"],
+    deps = [
+        ":factory",
+        ":instance",
+    ],
+)
