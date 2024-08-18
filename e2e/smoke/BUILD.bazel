@@ -33,16 +33,16 @@ cue_version(
 )
 
 cue_instance(
-    name = "smoke_instance",
+    name = "cue_instance",
     package_name = "smoke",
     srcs = ["smoke.cue"],
     ancestor = "//cue.mod",
 )
 
 cue_export(
-    name = "smoke_export",
+    name = "cue_export",
     out = "yaml",
-    instance = ":smoke_instance",
+    instance = ":cue_instance",
     package = "smoke",
 )
 
@@ -54,6 +54,25 @@ write_file(
 
 diff_test(
     name = "diff_export",
-    file1 = ":smoke_export",
+    file1 = ":cue_export",
     file2 = ":export_golden",
+)
+
+cue_export(
+    name = "cue_export_expression",
+    expression = "foo",
+    instance = ":cue_instance",
+    package = "smoke",
+)
+
+write_file(
+    name = "export_expression_golden",
+    out = "export-expression.golden.yaml",
+    content = ["\"bar\"\n"],
+)
+
+diff_test(
+    name = "diff_export_expression",
+    file1 = ":cue_export_expression",
+    file2 = ":export_expression_golden",
 )
