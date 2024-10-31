@@ -1075,8 +1075,8 @@
     },
     "@@rules_go~//go:extensions.bzl%go_sdk": {
       "os:linux,arch:amd64": {
-        "bzlTransitiveDigest": "18a/peNkcS54Au1xgy1jNZDJmDd4IGQePAkJPfaGjLg=",
-        "usagesDigest": "XMRXwgQUzOKcHxib6s2ar9f1ebbRh/BkA3lUnmLi81Q=",
+        "bzlTransitiveDigest": "kt637QfyZMmCDKhE3KAU52MX8UfidPLfKY6LUYw+pFc=",
+        "usagesDigest": "xtmhX3jyFyGxBSm0tx5fo9cCdayvcpx+oWlyFjwXhas=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -1249,11 +1249,6 @@
           ],
           [
             "rules_go~",
-            "bazel_features",
-            "bazel_features~"
-          ],
-          [
-            "rules_go~",
             "bazel_tools",
             "bazel_tools"
           ],
@@ -1261,6 +1256,11 @@
             "rules_go~",
             "io_bazel_rules_go",
             "rules_go~"
+          ],
+          [
+            "rules_go~",
+            "io_bazel_rules_go_bazel_features",
+            "bazel_features~"
           ]
         ]
       },
