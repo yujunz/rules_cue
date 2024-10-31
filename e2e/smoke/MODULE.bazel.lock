@@ -78,19 +78,19 @@
     "@@apple_support~//crosstool:setup.bzl%apple_cc_configure_extension": {
       "general": {
         "bzlTransitiveDigest": "PjIds3feoYE8SGbbIq2SFTZy3zmxeO2tQevJZNDo7iY=",
-        "usagesDigest": "aLmqbvowmHkkBPve05yyDNGN7oh7QE9kBADr3QIZTZs=",
+        "usagesDigest": "+hz7IHWN6A1oVJJWNDB6yZRG+RYhF76wAYItpAeIUIg=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
-          "local_config_apple_cc": {
-            "bzlFile": "@@apple_support~//crosstool:setup.bzl",
-            "ruleClassName": "_apple_cc_autoconf",
-            "attributes": {}
-          },
           "local_config_apple_cc_toolchains": {
             "bzlFile": "@@apple_support~//crosstool:setup.bzl",
             "ruleClassName": "_apple_cc_autoconf_toolchains",
+            "attributes": {}
+          },
+          "local_config_apple_cc": {
+            "bzlFile": "@@apple_support~//crosstool:setup.bzl",
+            "ruleClassName": "_apple_cc_autoconf",
             "attributes": {}
           }
         },
@@ -106,7 +106,7 @@
     "@@platforms//host:extension.bzl%host_platform": {
       "general": {
         "bzlTransitiveDigest": "xelQcPZH8+tmuOHVjL9vDxMnnQNMlwj0SlvgoqBkm4U=",
-        "usagesDigest": "meSzxn3DUCcYEhq4HQwExWkWtU4EjriRBQLsZN+Q0SU=",
+        "usagesDigest": "pCYpDQmqMbmiiPI1p2Kd3VLm5T48rRAht5WdW0X2GlA=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -122,41 +122,17 @@
     },
     "@@rules_abcue~//cue:extensions.bzl%cue": {
       "general": {
-        "bzlTransitiveDigest": "lHAGzdM+YvOd2xn6QzjCM9JJPzdwfCpv3ObMQw9F1ck=",
-        "usagesDigest": "lU1hPkzzUtEN2Nr+LbTPxLgJdmmT3iU90kJMAscdRIk=",
+        "bzlTransitiveDigest": "rINvTtptODISWLx7C2FwIDXQh6TD4mnYzoq54fQ1/VM=",
+        "usagesDigest": "6HHsnh1SBuk28Q9maexH67EUnXnTyb/+3HJuSA1CaN8=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
-          "cue_windows_amd64": {
-            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
-            "ruleClassName": "cue_repositories",
-            "attributes": {
-              "platform": "windows_amd64",
-              "cue_version": "0.8.2"
-            }
-          },
-          "cue_windows_arm64": {
-            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
-            "ruleClassName": "cue_repositories",
-            "attributes": {
-              "platform": "windows_arm64",
-              "cue_version": "0.8.2"
-            }
-          },
           "cue_darwin_amd64": {
             "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "darwin_amd64",
-              "cue_version": "0.8.2"
-            }
-          },
-          "cue_linux_arm64": {
-            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
-            "ruleClassName": "cue_repositories",
-            "attributes": {
-              "platform": "linux_arm64",
               "cue_version": "0.8.2"
             }
           },
@@ -173,6 +149,30 @@
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "linux_amd64",
+              "cue_version": "0.8.2"
+            }
+          },
+          "cue_linux_arm64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "linux_arm64",
+              "cue_version": "0.8.2"
+            }
+          },
+          "cue_windows_amd64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "windows_amd64",
+              "cue_version": "0.8.2"
+            }
+          },
+          "cue_windows_arm64": {
+            "bzlFile": "@@rules_abcue~//cue:repositories.bzl",
+            "ruleClassName": "cue_repositories",
+            "attributes": {
+              "platform": "windows_arm64",
               "cue_version": "0.8.2"
             }
           },
@@ -194,6 +194,196 @@
       }
     },
     "@@rules_go~//go:extensions.bzl%go_sdk": {
+      "os:linux,arch:amd64": {
+        "bzlTransitiveDigest": "FbDxGLRJne247LT/2KXAGa9BtYeNSFlfAsht96/O5hI=",
+        "usagesDigest": "WeP7Fffv0u0cx3G+sVrebw/0yabt7/e1e6zIzTbVa30=",
+        "recordedFileInputs": {},
+        "recordedDirentsInputs": {},
+        "envVariables": {},
+        "generatedRepoSpecs": {
+          "io_bazel_rules_nogo": {
+            "bzlFile": "@@rules_go~//go/private:nogo.bzl",
+            "ruleClassName": "go_register_nogo",
+            "attributes": {
+              "nogo": "@io_bazel_rules_go//:default_nogo",
+              "includes": [
+                "'@@//:__subpackages__'"
+              ],
+              "excludes": []
+            }
+          },
+          "go_default_sdk": {
+            "bzlFile": "@@rules_go~//go/private:sdk.bzl",
+            "ruleClassName": "go_download_sdk_rule",
+            "attributes": {
+              "goos": "",
+              "goarch": "",
+              "sdks": {},
+              "experiments": [],
+              "patches": [],
+              "patch_strip": 0,
+              "urls": [
+                "https://dl.google.com/go/{}"
+              ],
+              "version": "1.21.1",
+              "strip_prefix": "go"
+            }
+          },
+          "rules_go__download_0_darwin_amd64": {
+            "bzlFile": "@@rules_go~//go/private:sdk.bzl",
+            "ruleClassName": "go_download_sdk_rule",
+            "attributes": {
+              "goos": "",
+              "goarch": "",
+              "sdks": {},
+              "urls": [
+                "https://dl.google.com/go/{}"
+              ],
+              "version": "1.21.1"
+            }
+          },
+          "rules_go__download_0_darwin_arm64": {
+            "bzlFile": "@@rules_go~//go/private:sdk.bzl",
+            "ruleClassName": "go_download_sdk_rule",
+            "attributes": {
+              "goos": "",
+              "goarch": "",
+              "sdks": {},
+              "urls": [
+                "https://dl.google.com/go/{}"
+              ],
+              "version": "1.21.1"
+            }
+          },
+          "rules_go__download_0_linux_arm64": {
+            "bzlFile": "@@rules_go~//go/private:sdk.bzl",
+            "ruleClassName": "go_download_sdk_rule",
+            "attributes": {
+              "goos": "",
+              "goarch": "",
+              "sdks": {},
+              "urls": [
+                "https://dl.google.com/go/{}"
+              ],
+              "version": "1.21.1"
+            }
+          },
+          "rules_go__download_0_windows_amd64": {
+            "bzlFile": "@@rules_go~//go/private:sdk.bzl",
+            "ruleClassName": "go_download_sdk_rule",
+            "attributes": {
+              "goos": "",
+              "goarch": "",
+              "sdks": {},
+              "urls": [
+                "https://dl.google.com/go/{}"
+              ],
+              "version": "1.21.1"
+            }
+          },
+          "rules_go__download_0_windows_arm64": {
+            "bzlFile": "@@rules_go~//go/private:sdk.bzl",
+            "ruleClassName": "go_download_sdk_rule",
+            "attributes": {
+              "goos": "",
+              "goarch": "",
+              "sdks": {},
+              "urls": [
+                "https://dl.google.com/go/{}"
+              ],
+              "version": "1.21.1"
+            }
+          },
+          "go_host_compatible_sdk_label": {
+            "bzlFile": "@@rules_go~//go/private:extensions.bzl",
+            "ruleClassName": "host_compatible_toolchain",
+            "attributes": {
+              "toolchain": "@go_default_sdk//:ROOT"
+            }
+          },
+          "go_toolchains": {
+            "bzlFile": "@@rules_go~//go/private:sdk.bzl",
+            "ruleClassName": "go_multiple_toolchains",
+            "attributes": {
+              "prefixes": [
+                "_0000_go_default_sdk_",
+                "_0001_rules_go__download_0_darwin_amd64_",
+                "_0002_rules_go__download_0_darwin_arm64_",
+                "_0003_rules_go__download_0_linux_arm64_",
+                "_0004_rules_go__download_0_windows_amd64_",
+                "_0005_rules_go__download_0_windows_arm64_"
+              ],
+              "geese": [
+                "",
+                "darwin",
+                "darwin",
+                "linux",
+                "windows",
+                "windows"
+              ],
+              "goarchs": [
+                "",
+                "amd64",
+                "arm64",
+                "arm64",
+                "amd64",
+                "arm64"
+              ],
+              "sdk_repos": [
+                "go_default_sdk",
+                "rules_go__download_0_darwin_amd64",
+                "rules_go__download_0_darwin_arm64",
+                "rules_go__download_0_linux_arm64",
+                "rules_go__download_0_windows_amd64",
+                "rules_go__download_0_windows_arm64"
+              ],
+              "sdk_types": [
+                "remote",
+                "remote",
+                "remote",
+                "remote",
+                "remote",
+                "remote"
+              ],
+              "sdk_versions": [
+                "1.21.1",
+                "1.21.1",
+                "1.21.1",
+                "1.21.1",
+                "1.21.1",
+                "1.21.1"
+              ]
+            }
+          }
+        },
+        "recordedRepoMappingEntries": [
+          [
+            "bazel_features~",
+            "bazel_features_globals",
+            "bazel_features~~version_extension~bazel_features_globals"
+          ],
+          [
+            "bazel_features~",
+            "bazel_features_version",
+            "bazel_features~~version_extension~bazel_features_version"
+          ],
+          [
+            "rules_go~",
+            "bazel_tools",
+            "bazel_tools"
+          ],
+          [
+            "rules_go~",
+            "io_bazel_rules_go",
+            "rules_go~"
+          ],
+          [
+            "rules_go~",
+            "io_bazel_rules_go_bazel_features",
+            "bazel_features~"
+          ]
+        ]
+      },
       "os:osx,arch:x86_64": {
         "bzlTransitiveDigest": "7C++wS49S43/9TEVaTutX9vkTpy4itcj4W/KCJI5oWQ=",
         "usagesDigest": "58cj8M1mv/SAh44UJCBJ5uGYFrxmqtV9I0TXVQamayM=",
