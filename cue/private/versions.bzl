@@ -3,20 +3,35 @@
 TODO: generate this file from GitHub API"""
 
 TOOL_VERSIONS = {
-    # https://github.com/cue-lang/cue/releases/download/v0.10.0/checksums.txt
-    # cdd6acbd87528ae8f8f62497770a600ea23503d6f8b46f5919c7008f20b5238f  cue_v0.10.0_darwin_amd64.tar.gz
-    # f72e5dae8b682f43a1e80fb3066a42e82c77725ac2a175927212d0be9d12671a  cue_v0.10.0_darwin_arm64.tar.gz
-    # 8f449c76f69c94fd17fff869e96ec34de7f059d6d63bf05617477ed0e6133fd2  cue_v0.10.0_linux_amd64.tar.gz
-    # 49369a3566af3117712a7a91dc2ec924cb5c4128385ab2edd877d9997e761312  cue_v0.10.0_linux_arm64.tar.gz
-    # ae09f026261331530593966ab2d61b330a6565fd7339c13a3eed3eaa5bd4c066  cue_v0.10.0_windows_amd64.zip
-    # e82bececf6aafcee74b9be4273b0163299939d0cea95fd32e8349854667775bc  cue_v0.10.0_windows_arm64.zip
-    "0.10.0": {
-        "darwin_amd64": "cdd6acbd87528ae8f8f62497770a600ea23503d6f8b46f5919c7008f20b5238f",
-        "darwin_arm64": "f72e5dae8b682f43a1e80fb3066a42e82c77725ac2a175927212d0be9d12671a",
-        "linux_amd64": "8f449c76f69c94fd17fff869e96ec34de7f059d6d63bf05617477ed0e6133fd2",
-        "linux_arm64": "49369a3566af3117712a7a91dc2ec924cb5c4128385ab2edd877d9997e761312",
-        "windows_amd64": "ae09f026261331530593966ab2d61b330a6565fd7339c13a3eed3eaa5bd4c066",
-        "windows_arm64": "e82bececf6aafcee74b9be4273b0163299939d0cea95fd32e8349854667775bc",
+    # https://github.com/cue-lang/cue/releases/download/v0.11.0/checksums.txt
+    # 55aabc7c279e20654b734275cbbc64f4f6a6be034cdca9eee73cb06813e8bd2d  cue_v0.11.0_darwin_amd64.tar.gz
+    # 8db8868b184be737835fe1e4414249b70284b07bf3ebf425f0444d48b90be4ab  cue_v0.11.0_darwin_arm64.tar.gz
+    # fff7385999390c05c785a5fde5375002c1b02c2cdeae7195efa5e9997000dd47  cue_v0.11.0_linux_amd64.tar.gz
+    # fc77673c9e3a3363f045748bad4beda55e8c0c2b371a24c12007ecabc01b1053  cue_v0.11.0_linux_arm64.tar.gz
+    # aa58bc7e8623d6da6667de5d3774d8e665c5cb06db059dd071e2fa5e64492519  cue_v0.11.0_windows_amd64.zip
+    # 33a71461e6dcc9a40ece45ad2b852e0795a1a11a91181a91731913da173f676e  cue_v0.11.0_windows_arm64.zip
+    "0.11.0": {
+        "darwin_amd64": "55aabc7c279e20654b734275cbbc64f4f6a6be034cdca9eee73cb06813e8bd2d",
+        "darwin_arm64": "8db8868b184be737835fe1e4414249b70284b07bf3ebf425f0444d48b90be4ab",
+        "linux_amd64": "fff7385999390c05c785a5fde5375002c1b02c2cdeae7195efa5e9997000dd47",
+        "linux_arm64": "fc77673c9e3a3363f045748bad4beda55e8c0c2b371a24c12007ecabc01b1053",
+        "windows_amd64": "aa58bc7e8623d6da6667de5d3774d8e665c5cb06db059dd071e2fa5e64492519",
+        "windows_arm64": "33a71461e6dcc9a40ece45ad2b852e0795a1a11a91181a91731913da173f676e",
+    },
+    # https://github.com/cue-lang/cue/releases/download/v0.10.1/checksums.txt
+    # 24c2495238b72e892ad8ba523d235ab4f2a7464398bdbb704456d8a889ef3f3f  cue_v0.10.1_darwin_amd64.tar.gz
+    # cf0acd1f22271b76a399b95c3c491ca61936f7ab07f82aaacd1143da43a1426a  cue_v0.10.1_darwin_arm64.tar.gz
+    # 25d13fdb896fef4d9cb30eb01cb78e3717fb7eaf22c4163cc5b70ed970f0bc48  cue_v0.10.1_linux_amd64.tar.gz
+    # c06c37fa47b76363a3db0605b3a2e4114cd220a3a37746cf4bc07505fc07268b  cue_v0.10.1_linux_arm64.tar.gz
+    # 34a88731391de4f0cd4c43dbd7cba38922eee28103d1c902ad12a993cec12d50  cue_v0.10.1_windows_amd64.zip
+    # db09189395e40be14b1e836ad85900274dbf3655974209bad0a5ce69871af7c2  cue_v0.10.1_windows_arm64.zip
+    "0.10.1": {
+        "darwin_amd64": "24c2495238b72e892ad8ba523d235ab4f2a7464398bdbb704456d8a889ef3f3f",
+        "darwin_arm64": "cf0acd1f22271b76a399b95c3c491ca61936f7ab07f82aaacd1143da43a1426a",
+        "linux_amd64": "25d13fdb896fef4d9cb30eb01cb78e3717fb7eaf22c4163cc5b70ed970f0bc48",
+        "linux_arm64": "c06c37fa47b76363a3db0605b3a2e4114cd220a3a37746cf4bc07505fc07268b",
+        "windows_amd64": "34a88731391de4f0cd4c43dbd7cba38922eee28103d1c902ad12a993cec12d50",
+        "windows_arm64": "db09189395e40be14b1e836ad85900274dbf3655974209bad0a5ce69871af7c2",
     },
     # https://github.com/cue-lang/cue/releases/download/v0.9.2/checksums.txt
     # 87ebebb8459d579ff791843b3228ca64dc372181456d8e2b4ad4e3f0c607c94d  cue_v0.9.2_darwin_amd64.tar.gz
