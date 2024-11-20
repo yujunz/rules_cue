@@ -21,7 +21,7 @@ genrule(
 write_file(
     name = "verison_golden",
     out = "version.golden",
-    content = ["cue version v0.8.2\n"],
+    content = ["cue version v0.11.1\n"],
 )
 
 diff_test(
