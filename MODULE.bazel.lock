@@ -92,7 +92,7 @@
   "moduleExtensions": {
     "//cue:extensions.bzl%cue": {
       "general": {
-        "bzlTransitiveDigest": "TkBoFh+eIhfHXHKU2QjKriHX8/roKVLA+oojl26NlVg=",
+        "bzlTransitiveDigest": "8PpKdpNbNcLmfNRXUWlA5LKBaN53CZGAQE52VTy5pMY=",
         "usagesDigest": "s59JhNwk/TVLHeAQyjelZ8U4qwBKOJ0gZJiZYv1o3Ks=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
