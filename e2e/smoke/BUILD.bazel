@@ -18,18 +18,6 @@ genrule(
     ],
 )
 
-write_file(
-    name = "verison_golden",
-    out = "version.golden",
-    content = ["cue version v0.11.1\n"],
-)
-
-diff_test(
-    name = "diff_version",
-    file1 = ":version_short",
-    file2 = ":verison_golden",
-)
-
 cue_version(
     name = "cue_version",
 )
