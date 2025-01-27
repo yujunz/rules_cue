@@ -164,8 +164,8 @@
     },
     "@@rules_abcue+//cue:extensions.bzl%cue": {
       "general": {
-        "bzlTransitiveDigest": "s/AnjZJvpuHAVBshdGVmmZttK0aQJY3aiH4LoiYglXA=",
-        "usagesDigest": "50z/7Kd5UDNZNGfeL9j3Sa0dmD09L5Hso1lLcAPQaCc=",
+        "bzlTransitiveDigest": "Di0q66OJzMxqUdojt9MI5eMTsEdttCwJYa8R+hbwerU=",
+        "usagesDigest": "aq0k1ZUJLrMA9/86gLZHatuNc9xXz5KDDSggwn55vYM=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -174,42 +174,42 @@
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "darwin_amd64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_darwin_arm64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "darwin_arm64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_linux_amd64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "linux_amd64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_linux_arm64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "linux_arm64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_windows_amd64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "windows_amd64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_windows_arm64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "windows_arm64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_toolchains": {
