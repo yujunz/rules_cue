@@ -20,7 +20,7 @@ rules_abcue_dependencies()
 
 cue_register_toolchains(
     name = "cue",
-    cue_version = "0.11.1",
+    cue_version = "0.11.2",
 )
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")

@@ -164,8 +164,8 @@
     },
     "@@rules_abcue+//cue:extensions.bzl%cue": {
       "general": {
-        "bzlTransitiveDigest": "k+COcMHEp0Uvq3BdKec7upghGYtSMOQXzGoiaTzZImw=",
-        "usagesDigest": "X0kseRgmesrIoCsASAcXWuvO5KTLLXBFyucnajiddio=",
+        "bzlTransitiveDigest": "s/AnjZJvpuHAVBshdGVmmZttK0aQJY3aiH4LoiYglXA=",
+        "usagesDigest": "50z/7Kd5UDNZNGfeL9j3Sa0dmD09L5Hso1lLcAPQaCc=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -174,42 +174,42 @@
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "darwin_amd64",
-              "cue_version": "0.11.1"
+              "cue_version": "0.11.2"
             }
           },
           "cue_darwin_arm64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "darwin_arm64",
-              "cue_version": "0.11.1"
+              "cue_version": "0.11.2"
             }
           },
           "cue_linux_amd64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "linux_amd64",
-              "cue_version": "0.11.1"
+              "cue_version": "0.11.2"
             }
           },
           "cue_linux_arm64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "linux_arm64",
-              "cue_version": "0.11.1"
+              "cue_version": "0.11.2"
             }
           },
           "cue_windows_amd64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "windows_amd64",
-              "cue_version": "0.11.1"
+              "cue_version": "0.11.2"
             }
           },
           "cue_windows_arm64": {
             "repoRuleId": "@@rules_abcue+//cue:repositories.bzl%cue_repositories",
             "attributes": {
               "platform": "windows_arm64",
-              "cue_version": "0.11.1"
+              "cue_version": "0.11.2"
             }
           },
           "cue_toolchains": {
@@ -230,7 +230,7 @@
     },
     "@@rules_go+//go:extensions.bzl%go_sdk": {
       "os:osx,arch:x86_64": {
-        "bzlTransitiveDigest": "g0/edOScLaZznKNVPiSohjmuan96gMP1x+aUrk7eq6M=",
+        "bzlTransitiveDigest": "I9PdBojAIqLoEL2SXIMqfWZLtS9dfmezHW6FYc81rrk=",
         "usagesDigest": "MifP1l7d7BHYu91vmkISMhhs/GgTRO9SNIw9aSEEpW8=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
