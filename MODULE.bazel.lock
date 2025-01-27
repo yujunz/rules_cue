@@ -92,8 +92,8 @@
   "moduleExtensions": {
     "//cue:extensions.bzl%cue": {
       "general": {
-        "bzlTransitiveDigest": "d04h5lmz4WP2eO8Yy8JSqDBCg5g4jEfgxaScQdPMFY0=",
-        "usagesDigest": "JqKV2IgrN5DsGtx0ecuQqQ10KQQi/slt/wb5oS/ZCU4=",
+        "bzlTransitiveDigest": "auTMuc7MgnGFiFp/DnRoAFjVvfdPvzSwqm4tVZG5o/0=",
+        "usagesDigest": "pci8+I7AmuRtuu4+1Rc1GkI2+O5Rq8xjaJHEYh1p5b4=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -103,7 +103,7 @@
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "windows_amd64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_windows_arm64": {
@@ -111,7 +111,7 @@
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "windows_arm64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_darwin_amd64": {
@@ -119,7 +119,7 @@
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "darwin_amd64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_linux_arm64": {
@@ -127,7 +127,7 @@
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "linux_arm64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_darwin_arm64": {
@@ -135,7 +135,7 @@
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "darwin_arm64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_linux_amd64": {
@@ -143,7 +143,7 @@
             "ruleClassName": "cue_repositories",
             "attributes": {
               "platform": "linux_amd64",
-              "cue_version": "0.11.2"
+              "version": "0.11.2"
             }
           },
           "cue_toolchains": {

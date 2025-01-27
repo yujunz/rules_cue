@@ -10,30 +10,28 @@ names (the latest version will be picked for each name) and can register them as
 effectively overriding the default named toolchain due to toolchain resolution precedence.
 """
 
-load(":repositories.bzl", "cue_register_toolchains")
-
-_DEFAULT_NAME = "cue"
+load(":repositories.bzl", "DEFAULT_NAME", "DEFAULT_VERSION", "cue_register_toolchains")
 
 cue_toolchain = tag_class(attrs = {
     "name": attr.string(doc = """\
 Base name for generated repositories, allowing more than one cue toolchain to be registered.
 Overriding the default is only permitted in the root module.
-""", default = _DEFAULT_NAME),
-    "cue_version": attr.string(doc = "Explicit version of cue.", mandatory = True),
+""", default = DEFAULT_NAME),
+    "version": attr.string(doc = "Explicit version of cue.", default = DEFAULT_VERSION),
 })
 
 def _toolchain_extension(module_ctx):
     registrations = {}
     for mod in module_ctx.modules:
         for toolchain in mod.tags.toolchain:
-            if toolchain.name != _DEFAULT_NAME and not mod.is_root:
+            if toolchain.name != DEFAULT_NAME and not mod.is_root:
                 fail("""\
                 Only the root module may override the default name for the cue toolchain.
                 This prevents conflicting registrations in the global namespace of external repos.
                 """)
             if toolchain.name not in registrations.keys():
                 registrations[toolchain.name] = []
-            registrations[toolchain.name].append(toolchain.cue_version)
+            registrations[toolchain.name].append(toolchain.version)
     for name, versions in registrations.items():
         if len(versions) > 1:
             # TODO: should be semver-aware, using MVS
@@ -46,7 +44,7 @@ def _toolchain_extension(module_ctx):
 
         cue_register_toolchains(
             name = name,
-            cue_version = selected,
+            version = selected,
             register = False,
         )
 
