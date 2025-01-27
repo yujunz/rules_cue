@@ -16,7 +16,7 @@ bazel_dep(name = "aspect_bazel_lib", version = "1.32.1", dev_dependency = True)
 bazel_dep(name = "buildifier_prebuilt", version = "6.1.2", dev_dependency = True)
 
 cue = use_extension("//cue:extensions.bzl", "cue")
-cue.toolchain(cue_version = "0.11.1")
+cue.toolchain(cue_version = "0.11.2")
 use_repo(cue, "cue_toolchains")
 
 register_toolchains("@cue_toolchains//:all")
