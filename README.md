@@ -1,4 +1,4 @@
-# A Bazel rules implementation for Cue
+# A Bazel Cue rules implementation
 
 ## Installation
 
